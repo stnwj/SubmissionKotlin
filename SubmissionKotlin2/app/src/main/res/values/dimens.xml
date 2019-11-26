@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen0dp">0dp</dimen>
+    <dimen name="dimen4dp">4dp</dimen>
+    <dimen name="dimen8dp">8dp</dimen>
+    <dimen name="dimen16dp">16dp</dimen>
+    <dimen name="dimen24dp">24dp</dimen>
+    <dimen name="tulisan12sp">12sp</dimen>
+    <dimen name="tulisan16sp">16sp</dimen>
+    <dimen name="tulisan18sp">18sp</dimen>
+    <dimen name="tulisan20sp">20sp</dimen>
+    <dimen name="tulisan50sp">50sp</dimen>
+</resources>

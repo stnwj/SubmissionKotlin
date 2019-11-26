@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <item name="cvLiga" type="id" />
-    <item name="imgLiga" type="id" />
-    <item name="lblNama" type="id" />
-    <item name="cvDeskripsi" type="id" />
-    <item name="recyclerviewLiga" type="id" />
-    <item name="layout1" type="id" />
-</resources>
