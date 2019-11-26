@@ -15,7 +15,19 @@
         android:layout_marginTop="@dimen/dimen16dp"
         android:background="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/image"/>
+
+    <ImageView
+        android:id="@+id/imgFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen16dp"
+        android:layout_marginEnd="@dimen/dimen16dp"
+        android:background="@drawable/ic_favorite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/image"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/layout1"
@@ -180,7 +192,8 @@
                 android:layout_marginStart="@dimen/dimen4dp"
                 app:layout_constraintStart_toEndOf="@+id/tv1"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_yellowcard" />
+                app:srcCompat="@drawable/ic_yellowcard"
+                android:contentDescription="@string/image" />
 
             <View
                 android:id="@+id/layout3"
@@ -245,7 +258,8 @@
                 android:layout_marginTop="@dimen/dimen16dp"
                 app:layout_constraintStart_toEndOf="@+id/tv2"
                 app:layout_constraintTop_toBottomOf="@+id/tb1"
-                app:srcCompat="@drawable/ic_redcard" />
+                app:srcCompat="@drawable/ic_redcard"
+                android:contentDescription="@string/image"/>
 
             <View
                 android:id="@+id/layout4"
