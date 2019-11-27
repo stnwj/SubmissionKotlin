@@ -21,6 +21,8 @@ import kotlin.collections.ArrayList
  * A simple [Fragment] subclass.
  */
 class PreviousMatchFragment : Fragment() {
+    lateinit var matchesAdapter: MatchesAdapter
+
     lateinit var rvPrevMatch: RecyclerView
     lateinit var prevProgressBar: ProgressBar
 
@@ -43,6 +45,8 @@ class PreviousMatchFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         rvPrevMatch.layoutManager = LinearLayoutManager(context)
+        matchesAdapter = MatchesAdapter(context!!, prevArrayList)
+        rvPrevMatch.adapter = matchesAdapter
         getPreviousMatch()
 
     }
@@ -53,8 +57,8 @@ class PreviousMatchFragment : Fragment() {
         LigaController().getPreviousMatches(idLiga!!, object : MatchesCallBack {
             override fun onMatchesCallBack(matchesModel: MatchesModel) {
                 prevArrayList.add(matchesModel)
-                rvPrevMatch.adapter = MatchesAdapter(context!!, prevArrayList)
                 prevProgressBar.visibility = View.GONE
+                matchesAdapter.notifyDataSetChanged()
             }
         })
     }

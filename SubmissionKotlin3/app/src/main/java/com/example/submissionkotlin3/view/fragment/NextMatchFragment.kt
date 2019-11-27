@@ -20,6 +20,7 @@ import com.example.submissionkotlin3.view.callback.MatchesCallBack
  * A simple [Fragment] subclass.
  */
 class NextMatchFragment : Fragment() {
+    lateinit var matchesAdapter: MatchesAdapter
 
     lateinit var nextProgressbar: ProgressBar
     lateinit var rvNextMatch: RecyclerView
@@ -41,7 +42,9 @@ class NextMatchFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         rvNextMatch.layoutManager = LinearLayoutManager(context)
-        getPreviousMatch()
+        matchesAdapter = MatchesAdapter(context!!,nextArrayList)
+        rvNextMatch.adapter = matchesAdapter
+            getPreviousMatch()
     }
 
     private fun getPreviousMatch() {
@@ -49,9 +52,8 @@ class NextMatchFragment : Fragment() {
         LigaController().getNextMatches(idLiga!!, object : MatchesCallBack {
             override fun onMatchesCallBack(matchesModel: MatchesModel) {
                 nextArrayList.add(matchesModel)
-
-                rvNextMatch.adapter = MatchesAdapter(context!!,nextArrayList)
                 nextProgressbar.visibility = View.GONE
+                matchesAdapter.notifyDataSetChanged()
             }
         })
     }

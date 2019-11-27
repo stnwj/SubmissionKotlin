@@ -2,40 +2,49 @@ package com.example.submissionkotlin3.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.submissionkotlin3.R
-import com.example.submissionkotlin3.model.LigaModel
-import com.example.submissionkotlin3.view.adapter.LigaAdapter
+import com.example.submissionkotlin3.view.fragment.FavoriteFragment
+import com.example.submissionkotlin3.view.fragment.LeagueFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    val ligaArrayList : ArrayList<LigaModel> = arrayListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        getData()
-        rvLiga.layoutManager = LinearLayoutManager(this)
-        rvLiga.adapter = LigaAdapter(this, ligaArrayList)
-
+        bottom_navigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.league -> {
+                    loadTeamsFragment(savedInstanceState)
+                }
+                R.id.favorites -> {
+                    loadFavoritesFragment(savedInstanceState)
+                }
+            }
+            true
+        }
+        bottom_navigation.selectedItemId = R.id.league
     }
 
-    private fun getData() {
-        val id = resources.getStringArray(R.array.id_liga)
-        val nama = resources.getStringArray(R.array.nama_liga)
-        val deskripsi = resources.getStringArray(R.array.deskripsi_liga)
-        val gambar = resources.obtainTypedArray(R.array.image_liga)
-        ligaArrayList.clear()
-        for (i in id.indices) {
-            ligaArrayList.add(
-                LigaModel(
-                    id[i],
-                    nama[i],
-                    deskripsi[i],
-                    gambar.getResourceId(i, 0)
-                )
-            )
+    private fun loadTeamsFragment(savedInstanceState: Bundle?) {
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(
+                    R.id.flContainer,
+                    LeagueFragment(), LeagueFragment::class.java.simpleName)
+                .commit()
         }
-        gambar.recycle()
+    }
+
+    private fun loadFavoritesFragment(savedInstanceState: Bundle?) {
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(
+                    R.id.flContainer,
+                    FavoriteFragment(), FavoriteFragment::class.java.simpleName)
+                .commit()
+        }
     }
 }
